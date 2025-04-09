@@ -1,11 +1,31 @@
-import "bootstrap";
-import "./style.css";
+let pronoun = ['the', 'our'];
+let adj = ['great', 'big'];
+let noun = ['jogger', 'racoon'];
 
+let extensions = ['.com', '.net', '.us', '.io', '.co', '.es', '.tv'];
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+function generarNombres(pronoun, adj, noun, extensions) {
+  let nombresDominio = [];
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
-};
+  for (let p = 0; p < pronoun.length; p++) {
+    for (let a = 0; a < adj.length; a++) {
+      for (let n = 0; n < noun.length; n++) {
+        for (let e = 0; e < extensions.length; e++) {
+          
+          let dominio = pronoun[p] + adj[a] + noun[n] + extensions[e];
+          nombresDominio.push(dominio);
+
+          if (extensions[e] === '.es') {
+            
+            if (noun[n] === 'racoon') {
+              nombresDominio.push(pronoun[p] + adj[a] + 'racoo' + extensions[e]);
+            }
+          }
+        }
+      }
+    }
+  }
+  return nombresDominio
+}
+let dominios = generarNombres(pronoun, adj, noun, extensions);
+console.log(dominios);
